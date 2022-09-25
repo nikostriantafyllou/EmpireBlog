@@ -8,7 +8,6 @@ require("dotenv").config();
 const app = express();
 
 // connect to MongoDB
-
 mongoose
   .connect(process.env.DB_CONN)
   .then((result) => {
@@ -18,7 +17,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// register view engine  -- defaule folder is views | if i want other folder must set it
+// register view engine
 app.set("view engine", "ejs");
 
 // middleware & static files
@@ -27,7 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // routes
-
 app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
